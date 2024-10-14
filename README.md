@@ -1,3 +1,9 @@
+# Taller-1-estructura-de-datos
+Integrantes:
+* Vincenzo Porzio, RUT, correo, paralelo C2
+* Diego Parga, 21.621.105-7, diego.parga@alumnos.ucn.cl , paralelo C2
+
+
 # Proyecto de Sistema de Gestión de Material Bibliográfico
 
 ## Descripción
@@ -19,3 +25,7 @@ Utilizando MinGW:
 
    ```bash
    g++ -o sistema Sistema.cpp Libro.cpp Usuario.cpp MaterialBibliografico.cpp -std=c++11
+4. Ejecutar el programa:
+   
+   ```bash
+   ./main
