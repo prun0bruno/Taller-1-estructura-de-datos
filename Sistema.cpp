@@ -125,4 +125,9 @@ void Sistema::updateTxt(std::string archivo) {
 
 }
 
-Sistema::~Sistema() {}
+Sistema::~Sistema() {
+    for(int i = 0; i<100; i++){
+        if(usuarios[i]!=nullptr) delete usuarios[i];
+        if(biblioteca[i]!=nullptr) delete biblioteca[i];
+    }
+}

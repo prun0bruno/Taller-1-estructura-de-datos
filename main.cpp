@@ -239,6 +239,7 @@ void menu(Sistema * sistema) {
                 sistema->updateTxt("Usuarios.txt");
                 sistema->updateTxt("Materiales.txt");
                 std::cout << "¡Gracias por preferirnos!"<< std::endl;
+                delete sistema;
                 break;
             default:
                 std::cout << "Opción no válida. Intente nuevamente."<< std::endl;
