@@ -49,7 +49,16 @@ void MaterialBibliografico::mostrarInformacion() {
     std::cout << "Estado: " << estado<<std::endl;
 }
 
-std::string getTipo() {}
+//std::string getTipo() {}
+
+std::string MaterialBibliografico::toString() {
+    std::string estado;
+    if(prestado){ 
+        estado = "prestado";
+    } else estado = "disponible";
+
+    return nombre + "/" + isbn + "/" + autor + "/" + estado;
+}
 
 MaterialBibliografico::~MaterialBibliografico() {}
 

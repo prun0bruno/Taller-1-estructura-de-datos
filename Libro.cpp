@@ -23,8 +23,21 @@
     
  }
 
- std::string getTipo() {
-   return "LIBRO";
+ std::string Libro::toString() {
+   std::string estado;
+   std::string theUser;
+   if(this->getUser()==nullptr) {
+    theUser = "noTiene";
+   } else {
+    theUser = this->getUser()->getId();
+   }
+    if(this->getPrestado()){ 
+        estado = "prestado";
+    } else estado = "disponible";
+    return "LIBRO/" + this->getNombre() + "/" + this->getIsbn() + "/" + this-> getAutor() + "/" + estado + "/" + fechaPublicacion + "/" + resumen + "/" + theUser;
+
  }
+
+
 
  Libro::~Libro() {}

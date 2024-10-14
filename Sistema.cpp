@@ -1,3 +1,4 @@
+
 #include "Sistema.h" 
 
 Sistema::Sistema() {
@@ -5,8 +6,6 @@ Sistema::Sistema() {
                 biblioteca[i] = nullptr; 
                 usuarios[i] = nullptr;  
             }
-
-
 }
 
 bool Sistema::agregarMaterial(MaterialBibliografico*material){
@@ -97,8 +96,33 @@ bool Sistema::eliminarUsuario(Usuario* user) {
     return false;
 }
 
-void Sistema::updateTxt() {
+void Sistema::updateTxt(std::string archivo) {
+    std::ofstream file(archivo); 
     
+    if (file) {
+        
+        if(archivo=="Usuarios.txt") {
+            for(int i = 0; i<100; i++) {
+                if(usuarios[i]!=nullptr){
+                    file << usuarios[i]->toString() << std::endl;
+                }
+            }
+            std::cout << "Usuarios guardados con éxito" <<std::endl;
+
+        }
+        if(archivo=="Materiales.txt") {
+            for(int i = 0; i<100; i++) {
+                if(biblioteca[i]!=nullptr) {
+                    file << biblioteca[i]->toString() << std::endl;
+                }
+            }
+            std::cout << "Materiales bibliográficos guardados con éxito" <<std::endl;
+
+        }
+    } else {
+        std::cout << "No se pudo abrir el archivo." << std::endl;
+    }
+
 }
 
 Sistema::~Sistema() {}

@@ -11,9 +11,9 @@ class Revista : public MaterialBibliografico {
     public:
         Revista(std::string nombre, std::string isbn, std::string autor, bool prestado,std::string numeroEdicion,std::string mesPublicacion);
         
-        void mostrarInformacion();
+        virtual void mostrarInformacion();
 
-        std::string getTipo();
+        virtual std::string toString();
 
         ~Revista();
 

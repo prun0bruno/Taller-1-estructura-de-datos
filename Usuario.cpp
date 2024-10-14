@@ -78,4 +78,8 @@ std::string Usuario::getId() {
     return id;
 }
 
+std::string Usuario::toString() {
+    return nombre + "/" + id;
+}
+
 Usuario::~Usuario() {}

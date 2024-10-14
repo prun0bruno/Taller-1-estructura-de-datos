@@ -28,7 +28,7 @@ class Sistema {
         bool eliminarUsuario(Usuario* user);
 
 
-        void updateTxt();
+        void updateTxt(std::string archivo);
 
         ~Sistema();
 

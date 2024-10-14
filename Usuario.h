@@ -22,6 +22,8 @@ class Usuario{
         
         std::string getId();
 
+        std::string toString();
+
         ~Usuario();
     
 };

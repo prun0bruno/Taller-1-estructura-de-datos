@@ -23,8 +23,19 @@ void Revista::mostrarInformacion() {
     
 }
 
-std::string getTipo() {
-    return "REVISTA";
-}
+std::string Revista::toString() {
+   std::string estado;
+   std::string theUser;
+   if(this->getUser()==nullptr) {
+    theUser = "noTiene";
+   } else {
+    theUser = this->getUser()->getId();
+   }
+    if(this->getPrestado()){ 
+        estado = "prestado";
+    } else estado = "disponible";
+    return "REVISTA/" + this->getNombre() + "/" + this->getIsbn() + "/" + this-> getAutor() + "/" + estado + "/" + numeroEdicion + "/" + mesPublicacion + "/" + theUser;
+
+ }
 
 Revista::~Revista() {}

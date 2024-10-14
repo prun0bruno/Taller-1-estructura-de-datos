@@ -1,4 +1,7 @@
 #include <iostream>
+#include <fstream>
+#include <vector>
+
 #include "Sistema.h"
 
 #include "MaterialBibliografico.h"
@@ -13,8 +16,82 @@ std::string readLine() {
     return line;
 }
 
-void readFile(Sistema* sistema) {
-        //something something lasdfkjasd
+std::vector<std::string> split(const std::string& str, char delim) {
+    std::vector<std::string> tokens;
+    std::string token;
+    
+    for (char ch : str) {
+        if (ch == delim) {
+            if (!token.empty()) {
+                tokens.push_back(token);  
+            }
+            token.clear();  
+        } else {
+            token += ch;  
+        }
+    }
+    if (!token.empty()) {
+        tokens.push_back(token);  
+    }
+    
+    return tokens;
+}
+
+
+void readFile(Sistema* sistema, std::string archivo) {
+    std::ifstream file(archivo); 
+    std::string linea;
+
+    if (file) {
+        if(archivo=="Usuarios.txt") {
+            while (getline(file, linea)) {
+                std::vector<std::string> partes = split(linea,'/');
+                
+                sistema->crearUsuario(new Usuario(partes[0], partes[1]));
+                std::cout << linea << std::endl; 
+                 
+            }
+            file.close();
+        }
+        if(archivo=="Materiales.txt") {
+            int count = 0;
+            while(getline(file, linea)) {
+                std::vector<std::string> partes = split(linea,'/');
+                if(partes[0]=="LIBRO") {
+                    
+                    sistema->agregarMaterial(new Libro(partes[1],partes[2],partes[3],false,partes[5],partes[6]));
+                    count++;
+                    if(partes[4]=="prestado"){
+                        MaterialBibliografico* m = sistema->buscarMaterial(partes[2]);
+                        sistema->prestarMaterial(sistema->buscarUsuario(partes[7]),m);
+                        
+
+
+                    }
+
+                }
+                if(partes[0]=="REVISTA") {
+                    sistema->agregarMaterial(new Revista(partes[1],partes[2],partes[3],false,partes[5],partes[6]));
+                    count++;
+                    if(partes[4]=="prestado"){
+                        MaterialBibliografico* m = sistema->buscarMaterial(partes[2]);
+                        sistema->prestarMaterial(sistema->buscarUsuario(partes[7]),m);
+                        
+
+
+                    }
+
+                }
+                
+            }
+            file.close();
+            std::cout << "Ha(n) sido cargado(s) " << count << " material(es)." << std::endl;
+        }
+        
+    } else {
+        std::cout << "No se pudo abrir el archivo." << std::endl;
+    }
+    
 
 }
 
@@ -37,7 +114,9 @@ void menu(Sistema * sistema) {
                 break;
 
             case 1:
-                readFile(sistema);
+                readFile(sistema,"Usuarios.txt");
+                readFile(sistema,"Materiales.txt");
+
                 std::cout << "Iniciando sistema . . ." << std::endl;
                 std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~ ◈ ~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
 
@@ -157,7 +236,8 @@ void menu(Sistema * sistema) {
                 break;
             case 10:
                 std::cout << "Guardando . . ." << std::endl;
-                sistema->updateTxt();
+                sistema->updateTxt("Usuarios.txt");
+                sistema->updateTxt("Materiales.txt");
                 std::cout << "¡Gracias por preferirnos!"<< std::endl;
                 break;
             default:
@@ -171,10 +251,7 @@ void menu(Sistema * sistema) {
 int main() {
     Sistema* sistema = new Sistema();
 
-    if(sistema -> agregarMaterial(new Libro("Harry potter","123","J.K Rowling",false,"26 de junio 1997","magia!"))) std::cout<<"Material agregado con éxito."<<std::endl;
-    sistema -> agregarMaterial(new Libro("La mónada","321","J.K Rowling",false,"26 de junio 1987","filosofía!"));
-    sistema -> agregarMaterial(new Revista("les bateaux","69","pepite",false,"99","janvier"));   
-
+    
     menu(sistema);
 
     
