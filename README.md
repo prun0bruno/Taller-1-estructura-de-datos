@@ -1,7 +1,7 @@
 # Taller-1-estructura-de-datos
 Integrantes:
 * Vincenzo Porzio, 21.369.897-4, vincenzo.porzio@alumnos.ucn.cl, paralelo C2
-* Diego Parga, 21.621.105-7, diego.parga@alumnos.ucn.cl , paralelo C2
+* Diego Ignacio Parga Meza, 21.621.105-7, diego.parga@alumnos.ucn.cl , paralelo C2
 
 
 # Proyecto de Sistema de Gestión de Material Bibliográfico
@@ -39,6 +39,11 @@ Utilizando MinGW:
    * Libro y revista (.cpp y .h) : subclases de MaterialBibliografico, las cuales tienen su propios parámetros extras
    * Usuario (.cpp y .h) : clase indepentiende que maneja la información de los usuarios
    * Main.cpp : apartado donde se maneja la lógica general del programa (lectura de archivos, menú e interacciones con la consola)
+
+## Objetos creados
+   * sistema: se crea 1 sistema que maneja la lógica y la memoria. 
+   * libro: subclase de MaterialBibliografico. Admite parámetros string nombre/isbn/autor/(bool)prestado/fechaPublicacion/resumen
+   * revista: subclase de MaterialBibliografico. Admite parámetros string nombre/isbn/autor/(bool)prestado/numeroEdicion/mesPublicacion
 
 ## Notas
    * El sistema utiliza archivos de texto para resguardar información previa y posterior a su manejo
