@@ -1,6 +1,6 @@
 # Taller-1-estructura-de-datos
 Integrantes:
-* Vincenzo Porzio, 21.369.897-4, vincenzo.porzio@alumnos.ucn.cl, paralelo C2
+* Vincenzo Paolo Porzio Elgueta, 21.369.897-4, vincenzo.porzio@alumnos.ucn.cl, paralelo C2
 * Diego Ignacio Parga Meza, 21.621.105-7, diego.parga@alumnos.ucn.cl , paralelo C2
 
 
